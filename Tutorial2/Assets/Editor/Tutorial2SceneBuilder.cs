@@ -7,6 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem.UI;
 
 [InitializeOnLoad]
 public static class Tutorial2SceneBuilder
@@ -85,8 +86,8 @@ public static class Tutorial2SceneBuilder
         Material material = AssetDatabase.LoadAssetAtPath<Material>(path);
         if (material == null)
         {
-            Shader shader = Shader.Find("Standard");
-            if (shader == null) shader = Shader.Find("Universal Render Pipeline/Lit");
+            Shader shader = Shader.Find("Universal Render Pipeline/Lit");
+            if (shader == null) shader = Shader.Find("Standard");
             if (shader == null) shader = Shader.Find("Sprites/Default");
             material = new Material(shader);
             AssetDatabase.CreateAsset(material, path);
@@ -306,7 +307,8 @@ public static class Tutorial2SceneBuilder
 
         CreateButton(panel.transform, "Spawn Bush", manager, manager.SpawnBush);
         CreateButton(panel.transform, "Spawn Fruit", manager, manager.SpawnFruit);
-        new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
+        GameObject eventSystem = new GameObject("EventSystem", typeof(EventSystem), typeof(InputSystemUIInputModule));
+        eventSystem.GetComponent<InputSystemUIInputModule>().AssignDefaultActions();
     }
 
     private static void CreateButton(Transform parent, string label, Tutorial2GameManager manager, UnityAction action)
