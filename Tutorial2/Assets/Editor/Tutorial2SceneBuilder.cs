@@ -50,7 +50,7 @@ public static class Tutorial2SceneBuilder
         Material pear = CreateMaterial("Pear Green", new Color(0.55f, 0.76f, 0.16f));
         Material fruitStem = CreateMaterial("Fruit Stem", new Color(0.24f, 0.13f, 0.06f));
         Material ground = CreateMaterial("Ground", new Color(0.36f, 0.58f, 0.28f));
-        PhysicMaterial groundPhysics = CreateGroundPhysics();
+        PhysicsMaterial groundPhysics = CreateGroundPhysics();
 
         GameObject bushPrefab = CreateBushPrefab(leaves, wood, marker);
         GameObject[] fruits =
@@ -102,7 +102,7 @@ public static class Tutorial2SceneBuilder
 
     private static PhysicMaterial CreateGroundPhysics()
     {
-        const string path = MaterialsPath + "/GroundPhysics.physicMaterial";
+        const string path = MaterialsPath + "/GroundPhysics.physicsMaterial";
         PhysicMaterial physics = AssetDatabase.LoadAssetAtPath<PhysicMaterial>(path);
         if (physics == null)
         {
