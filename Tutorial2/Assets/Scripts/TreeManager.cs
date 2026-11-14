@@ -4,36 +4,38 @@ public class TreeManager : MonoBehaviour
 {
     public GameObject[] fruits;
     public Transform[] spawnPoints;
-    int currentFuit;
-    int currentSpawnPoint;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+
+    private int currentFruit;
+    private int currentSpawnPoint;
 
     public void SpawnFruit()
     {
-        if(currentSpawnPoint<spawnPoints.Length)
+        if (fruits == null || fruits.Length == 0 ||
+            spawnPoints == null || spawnPoints.Length == 0)
         {
-            Instantiate(fruits[currentFuit], spawnPoints[currentSpawnPoint].position, spawnPoints[currentSpawnPoint].rotation);
-
-            if (currentFuit < fruits.Length)
-            {
-                currentFuit++;
-            }
-            else
-            {
-                currentFuit = 0;
-            }
-
-            currentSpawnPoint++;
+            return;
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (currentSpawnPoint >= spawnPoints.Length)
+        {
+            print("Все точки спавна использованы.");
+            return;
+        }
+
+        Transform point = spawnPoints[currentSpawnPoint];
+
+        if (point == null || fruits[currentFruit] == null)
+            return;
+
+        Instantiate(fruits[currentFruit], point.position, point.rotation);
+
+        currentSpawnPoint++;
+        currentFruit++;
+
+        if (currentFruit >= fruits.Length)
+        {
+            currentFruit = 0;
+        }
+    
     }
 }
