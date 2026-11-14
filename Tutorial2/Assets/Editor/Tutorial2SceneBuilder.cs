@@ -34,7 +34,8 @@ public static class Tutorial2SceneBuilder
         if (EditorApplication.isCompiling || EditorApplication.isPlayingOrWillChangePlaymode)
             return;
 
-        if (!File.Exists(ScenePath))
+        string absoluteScenePath = Path.Combine(Directory.GetParent(Application.dataPath).FullName, ScenePath);
+        if (!File.Exists(absoluteScenePath))
             BuildAll();
     }
 
