@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class TreeManager : MonoBehaviour
 {
+    [Header("Spawn")]
     public GameObject[] fruits;
     public Transform[] spawnPoints;
+
+    private int currentFruit;
+    private int currentSpawnPoint;
+
+    [Header("Drop")]
     public Collider groundCollider;
     public AudioClip groundImpactSound;
     public float dropInterval = 0.5f;
 
     private readonly List<Rigidbody> spawnedFruits = new();
-    private int currentFruit;
-    private int currentSpawnPoint;
     private bool drop;
     private bool isDropping;
 
