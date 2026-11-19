@@ -1,12 +1,22 @@
 ﻿using UnityEngine;
 
+using System.Diagnostics;
+using NUnit.Framework;
+
 public class TreeManager : MonoBehaviour
 {
     public GameObject[] fruits;
     public Transform[] spawnPoints;
 
-    private int currentFruit;
+    private int currentFruit = 0;
     private int currentSpawnPoint;
+
+    
+
+    private void Start()
+    {
+        //SpawnFruit();
+    }
 
     public void SpawnFruit()
     {
@@ -18,7 +28,7 @@ public class TreeManager : MonoBehaviour
 
         if (currentSpawnPoint >= spawnPoints.Length)
         {
-            print("Все точки спавна использованы.");
+            print("All spawn points had used");
             return;
         }
 
@@ -28,6 +38,7 @@ public class TreeManager : MonoBehaviour
             return;
 
         Instantiate(fruits[currentFruit], point.position, point.rotation);
+        
 
         currentSpawnPoint++;
         currentFruit++;
@@ -37,5 +48,10 @@ public class TreeManager : MonoBehaviour
             currentFruit = 0;
         }
     
+    }
+
+    void DropFruit()
+    {
+
     }
 }
