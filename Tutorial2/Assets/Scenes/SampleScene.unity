@@ -1381,6 +1381,9 @@ MonoBehaviour:
   - {fileID: 386384778}
   - {fileID: 386384777}
   - {fileID: 386384776}
+  dropInterval: 0.5
+  groundCollider: {fileID: 7684379}
+  groundImpactSound: {fileID: 8300000, guid: abde043dfb93448391d070f5f8881901, type: 3}
 --- !u!4 &1851711499
 Transform:
   m_ObjectHideFlags: 0
