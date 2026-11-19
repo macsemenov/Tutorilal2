@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -13,7 +14,6 @@ public class TreeManager : MonoBehaviour
     private int currentSpawnPoint;
 
     [Header("Drop")]
-    public Collider groundCollider;
 
     public float dropInterval = 0.5f;
 
@@ -24,7 +24,13 @@ public class TreeManager : MonoBehaviour
 
     public AudioSource audioSource;
 
+    [Header("Counter")]
+    public TMP_Text counterText;
+    int counter;
+
     public static TreeManager instance;
+
+   
 
     private void Awake()
     {
@@ -42,7 +48,8 @@ public class TreeManager : MonoBehaviour
         }
 
         Transform point = spawnPoints[currentSpawnPoint];
-        GameObject fruit = Instantiate(fruits[currentFruit], point.position, point.rotation, point);
+        GameObject fruit = Instantiate(fruits[currentFruit], point.position, point.rotation,point);
+        //fruit.transform.SetParent(point);
 
         Rigidbody body = fruit.GetComponent<Rigidbody>();
         body.isKinematic = true;
@@ -81,5 +88,11 @@ public class TreeManager : MonoBehaviour
     public void PlaySound()
     {
         audioSource.PlayOneShot(clip);
+    }
+
+    public void Count()
+    {
+        counter++;
+        counterText.text = counter.ToString();
     }
 }
