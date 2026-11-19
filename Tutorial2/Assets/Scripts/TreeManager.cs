@@ -1,6 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class TreeManager : MonoBehaviour
 {
@@ -13,12 +14,22 @@ public class TreeManager : MonoBehaviour
 
     [Header("Drop")]
     public Collider groundCollider;
-    public AudioClip groundImpactSound;
+
     public float dropInterval = 0.5f;
 
     private readonly List<Rigidbody> spawnedFruits = new();
     private bool drop;
     private bool isDropping;
+    public AudioClip clip;
+
+    public AudioSource audioSource;
+
+    public static TreeManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void SpawnFruit()
     {
@@ -36,9 +47,6 @@ public class TreeManager : MonoBehaviour
         Rigidbody body = fruit.GetComponent<Rigidbody>();
         body.isKinematic = true;
         spawnedFruits.Add(body);
-
-        FruitGroundImpact impact = fruit.AddComponent<FruitGroundImpact>();
-        impact.Initialize(groundCollider, groundImpactSound);
 
         currentFruit = (currentFruit + 1) % fruits.Length;
         currentSpawnPoint++;
@@ -68,5 +76,10 @@ public class TreeManager : MonoBehaviour
         currentSpawnPoint = 0;
         drop = false;
         isDropping = false;
+    }
+
+    public void PlaySound()
+    {
+        audioSource.PlayOneShot(clip);
     }
 }
