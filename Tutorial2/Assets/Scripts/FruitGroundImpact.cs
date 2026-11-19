@@ -1,30 +1,22 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class FruitGroundImpact : MonoBehaviour
 {
-    [SerializeField] private AudioClip impactClip;
-    [SerializeField] private Collider groundCollider;
+    private Collider ground;
+    private AudioClip clip;
+    private bool played;
 
-    private bool hasPlayed;
-
-    public void Initialize(Collider ground, AudioClip clip)
+    public void Initialize(Collider groundCollider, AudioClip impactClip)
     {
-        groundCollider = ground;
-        impactClip = clip;
-        hasPlayed = false;
+        ground = groundCollider;
+        clip = impactClip;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (hasPlayed || impactClip == null || groundCollider == null)
-            return;
+        if (played || collision.collider != ground) return;
 
-        // Звук только при первом ударе о Plane, а не о соседний фрукт.
-        if (collision.collider != groundCollider)
-            return;
-
-        hasPlayed = true;
-        AudioSource.PlayClipAtPoint(impactClip, transform.position);
+        played = true;
+        AudioSource.PlayClipAtPoint(clip, transform.position);
     }
 }
