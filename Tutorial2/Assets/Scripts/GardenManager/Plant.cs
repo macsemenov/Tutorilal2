@@ -17,6 +17,15 @@ public class Plant : MonoBehaviour
     public float ripenTime = 2f;
     public float dropInterval = 0.5f;
     public float fruitSize = 0.3f;
+    public Vector3[] fruitPositions =
+    {
+        new(-0.6f, 1.8f, 0), new(0.6f, 1.9f, 0.1f),
+        new(0.1f, 2.2f, -0.6f), new(-0.2f, 1.6f, 0.7f),
+        new(0.7f, 1.55f, -0.45f), new(-0.7f, 2.2f, -0.35f)
+    };
+    public Color unripeColor = Color.green;
+    public Color ripeColor = Color.red;
+    public Color rottenColor = Color.black;
 
     [Header("Potato")]
     public float moundGrowTime = 3f;
@@ -41,28 +50,19 @@ public class Plant : MonoBehaviour
             yield break;
         }
 
-        Vector3[] positions =
-        {
-            new(-0.6f, 1.8f, 0),
-            new(0.6f, 1.9f, 0.1f),
-            new(0.1f, 2.2f, -0.6f),
-            new(-0.2f, 1.6f, 0.7f),
-            new(0.7f, 1.55f, -0.45f),
-            new(-0.7f, 2.2f, -0.35f)
-        };
-
         float height = plantType == PlantType.Tomato ? 0.55f : 1f;
         float size = plantType == PlantType.Tomato ? fruitSize * 0.8f : fruitSize;
 
         for (int i = 0; i < fruitCount; i++)
         {
             Transform shape = CreatePart(PrimitiveType.Sphere, "Fruit", foliage,
-                positions[i % positions.Length] * height,
-                Vector3.one * size, plantType == PlantType.Tomato ? Color.green : Color.red);
+                fruitPositions[i % fruitPositions.Length] * height,
+                Vector3.one * size, plantType == PlantType.Tomato ? unripeColor : ripeColor);
 
             GardenFruit fruit = shape.gameObject.AddComponent<GardenFruit>();
             fruit.plant = this;
             fruit.turnBlack = plantType == PlantType.Tomato;
+            fruit.rottenColor = rottenColor;
 
             Rigidbody body = shape.gameObject.AddComponent<Rigidbody>();
             body.isKinematic = true;
@@ -79,7 +79,7 @@ public class Plant : MonoBehaviour
             while (elapsed < ripenTime)
             {
                 elapsed += Time.deltaTime;
-                Color color = Color.Lerp(Color.green, Color.red, elapsed / ripenTime);
+                Color color = Color.Lerp(unripeColor, ripeColor, elapsed / ripenTime);
                 foreach (GardenFruit fruit in fruits)
                     fruit.GetComponent<Renderer>().material.color = color;
                 yield return null;
