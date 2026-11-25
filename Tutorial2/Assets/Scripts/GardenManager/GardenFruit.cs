@@ -5,6 +5,7 @@ public class GardenFruit : MonoBehaviour
     public Plant plant;
     public Rigidbody body;
     public bool turnBlack;
+    public Color rottenColor = Color.black;
 
     private bool landed;
 
@@ -14,7 +15,7 @@ public class GardenFruit : MonoBehaviour
 
         landed = true;
         if (turnBlack)
-            GetComponent<Renderer>().material.color = Color.black;
+            GetComponent<Renderer>().material.color = rottenColor;
 
         plant.FruitLanded();
     }
