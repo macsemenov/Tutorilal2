@@ -157,3 +157,4 @@ MonoBehaviour:
   body: {fileID: 105}
   turnBlack: 0
   rottenColor: {r: 0, g: 0, b: 0, a: 1}
+  impactSound: {fileID: 8300000, guid: abde043dfb93448391d070f5f8881901, type: 3}
