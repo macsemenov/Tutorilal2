@@ -48,10 +48,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de4a0a12f1244ed288b75bc39e601e02, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Plant
   plantType: 0
-  growTime: 2
+  growTime: 60
   foliage: {fileID: 200}
   fruitPrefab: {fileID: 100, guid: fc88d4acc87e4c15a37754fba5120b1f, type: 3}
   spawnPoints:
@@ -60,10 +60,10 @@ MonoBehaviour:
   - {fileID: 520}
   - {fileID: 530}
   - {fileID: 540}
-  fruitGrowTime: 0.5
-  fruitInterval: 0.5
+  fruitGrowTime: 10
+  fruitInterval: 1
   ripenTime: 2
-  dropInterval: 0.5
+  dropInterval: 3
   unripeColor: {r: 0, g: 1, b: 0, a: 1}
   ripeColor: {r: 1, g: 0, b: 0, a: 1}
   rottenColor: {r: 0, g: 0, b: 0, a: 1}
