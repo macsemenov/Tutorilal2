@@ -7,6 +7,7 @@ public class GardenFruit : MonoBehaviour
     public bool turnBlack;
     public Color rottenColor = Color.black;
     public AudioClip impactSound;
+    public AudioSource audioSource;
 
     private bool landed;
 
@@ -15,7 +16,7 @@ public class GardenFruit : MonoBehaviour
         if (landed || !collision.gameObject.CompareTag("Ground")) return;
 
         landed = true;
-        AudioSource.PlayClipAtPoint(impactSound, transform.position);
+        audioSource.PlayOneShot(impactSound);
         if (turnBlack)
             GetComponent<Renderer>().material.color = rottenColor;
 
