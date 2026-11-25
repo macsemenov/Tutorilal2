@@ -35,7 +35,10 @@ public class Plant : MonoBehaviour
 
         if (plantType == PlantType.Potato)
         {
-            yield return Grow(mound, moundGrowTime);
+            Vector3 moundSize = mound.localScale;
+            mound.localScale = Vector3.zero;
+            mound.gameObject.SetActive(true);
+            yield return Grow(mound, moundGrowTime, moundSize);
             foliage.gameObject.SetActive(false);
             yield break;
         }
@@ -84,7 +87,11 @@ public class Plant : MonoBehaviour
 
     private IEnumerator Grow(Transform part, float duration)
     {
-        Vector3 targetScale = part.localScale;
+        yield return Grow(part, duration, part.localScale);
+    }
+
+    private IEnumerator Grow(Transform part, float duration, Vector3 targetScale)
+    {
         part.localScale = Vector3.zero;
         float time = 0;
 
