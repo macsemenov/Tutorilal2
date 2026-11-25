@@ -48,11 +48,14 @@ public class Plant : MonoBehaviour
             fruit.rottenColor = rottenColor;
             fruit.body.isKinematic = true;
             fruits.Add(fruit);
+            OnFruitSpawned(fruit);
 
             yield return Grow(obj.transform, fruitGrowTime);
             yield return new WaitForSeconds(fruitInterval);
         }
     }
+
+    protected virtual void OnFruitSpawned(GardenFruit fruit) { }
 
     protected IEnumerator DropFruits()
     {

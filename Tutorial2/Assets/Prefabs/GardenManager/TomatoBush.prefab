@@ -61,7 +61,7 @@ MonoBehaviour:
   - {fileID: 540}
   fruitGrowTime: 5
   fruitInterval: 0.5
-  ripenTime: 10
+  ripenTime: 15
   dropInterval: 0.5
   unripeColor: {r: 0, g: 1, b: 0, a: 1}
   ripeColor: {r: 1, g: 0, b: 0, a: 1}
