@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,7 +26,7 @@ public class Plant : MonoBehaviour
     public Transform mound;
     public float moundGrowTime = 3f;
 
-    private readonly List<GardenFruit> fruits = new();
+    private List<GardenFruit> fruits = new();
     private int landedFruits;
 
     private IEnumerator Start()

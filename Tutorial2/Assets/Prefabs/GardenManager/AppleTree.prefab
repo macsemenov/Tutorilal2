@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Plant
   plantType: 0
-  growTime: 60
+  growTime: 30
   foliage: {fileID: 200}
   fruitPrefab: {fileID: 100, guid: fc88d4acc87e4c15a37754fba5120b1f, type: 3}
   spawnPoints:
@@ -66,7 +66,7 @@ MonoBehaviour:
   dropInterval: 3
   unripeColor: {r: 0, g: 1, b: 0, a: 1}
   ripeColor: {r: 1, g: 0, b: 0, a: 1}
-  rottenColor: {r: 0, g: 0, b: 0, a: 1}
+  rottenColor: {r: 0.335849, g: 0.19256641, b: 0.07033819, a: 1}
   mound: {fileID: 0}
   moundGrowTime: 3
 --- !u!1 &199
