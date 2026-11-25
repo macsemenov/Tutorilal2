@@ -786,7 +786,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 8d6d1c0e83ec4b38a42f8f86bfc15a23, type: 3}
   - {fileID: 100000, guid: eff9f9eb50314d78989afcad09a535c0, type: 3}
   - {fileID: 100000, guid: 19c5f927ab314b6eb0d2a0b61b973901, type: 3}
-  gardenCamera: {fileID: 961739751}
+  gardenCamera: {fileID: 961739752}
   ground: {fileID: 910733374}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
