@@ -47,10 +47,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de4a0a12f1244ed288b75bc39e601e02, type: 3}
+  m_Script: {fileID: 11500000, guid: 522b125d7be247fe9c098ac1a32d3d03, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Plant
-  plantType: 1
+  m_EditorClassIdentifier: Assembly-CSharp::TomatoPlant
   growTime: 10
   foliage: {fileID: 200}
   fruitPrefab: {fileID: 100, guid: 0753c7e18515499d9b3e6ba219e69e7f, type: 3}
