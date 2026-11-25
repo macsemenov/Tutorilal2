@@ -4,7 +4,7 @@ using UnityEngine;
 public class TomatoPlant : Plant
 {
     [Header("Tomatoes")]
-    public float ripenTime = 2f;
+    public float ripenTime = 15f;
     public Color unripeColor = Color.green;
     public Color ripeColor = Color.red;
     public Color rottenColor = Color.black;
@@ -16,19 +16,16 @@ public class TomatoPlant : Plant
         yield return Grow(foliage, growTime);
         yield return SpawnFruits(true, rottenColor);
 
-        float time = 0;
-        while (time < ripenTime)
-        {
-            time += Time.deltaTime;
-            Color color = Color.Lerp(unripeColor, ripeColor, time / ripenTime);
-
-            foreach (GardenFruit fruit in fruits)
-                fruit.GetComponent<Renderer>().material.color = color;
-
+        // Each fruit ripens from its own creation time.
+        while (!fruits[fruits.Count - 1].ripe)
             yield return null;
-        }
 
         yield return DropFruits();
+    }
+
+    protected override void OnFruitSpawned(GardenFruit fruit)
+    {
+        fruit.StartRipening(ripenTime, unripeColor, ripeColor);
     }
 
     public override void FruitLanded()
